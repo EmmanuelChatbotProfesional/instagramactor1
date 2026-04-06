@@ -1,0 +1,64 @@
+{
+  "actorSpecification": 1,
+  "name": "instagram-highlights-scraper",
+  "title": "Instagram Highlights Scraper",
+  "description": "Scrape Instagram highlights from any public account. Extract highlight titles, cover images, user information, and metadata. Supports multiple accounts in a single run!",
+  "version": "1.0",
+  "input": "./src/input_schema.json",
+  "dockerfile": "./Dockerfile",
+  "storages": {
+    "dataset": {
+      "actorSpecification": 1,
+      "title": "Instagram Highlights",
+      "description": "Scraped highlights data",
+      "views": {
+        "highlights": {
+          "title": "✨ Highlights Overview",
+          "description": "Overview of all scraped highlights with titles, IDs, and cover images",
+          "transformation": {
+            "fields": [
+              "username",
+              "userId",
+              "highlightId",
+              "highlightTitle",
+              "coverImageUrl"
+            ]
+          },
+          "display": {
+            "component": "table",
+            "properties": {
+              "username":       { "label": "Username",        "format": "text" },
+              "userId":         { "label": "User ID",         "format": "text" },
+              "highlightId":    { "label": "Highlight ID",    "format": "text" },
+              "highlightTitle": { "label": "Title",           "format": "text" },
+              "coverImageUrl":  { "label": "Cover Image URL", "format": "text" }
+            }
+          }
+        },
+        "coverMedia": {
+          "title": "🖼️ Cover Media",
+          "description": "Detailed cover image data with URLs",
+          "transformation": {
+            "fields": [
+              "username",
+              "highlightId",
+              "highlightTitle",
+              "coverImageUrl",
+              "coverImageUrlWrapped"
+            ]
+          },
+          "display": {
+            "component": "table",
+            "properties": {
+              "username":             { "label": "Username",              "format": "text" },
+              "highlightId":          { "label": "Highlight ID",          "format": "text" },
+              "highlightTitle":       { "label": "Title",                 "format": "text" },
+              "coverImageUrl":        { "label": "Cover Image URL",       "format": "text" },
+              "coverImageUrlWrapped": { "label": "Cover Image (Wrapped)", "format": "text" }
+            }
+          }
+        }
+      }
+    }
+  }
+}
