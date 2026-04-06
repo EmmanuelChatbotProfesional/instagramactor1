@@ -1,0 +1,17 @@
+{
+  "name": "instagram-highlights-scraper",
+  "version": "1.0.0",
+  "description": "Scrape Instagram highlights from public accounts",
+  "main": "src/main.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/main.js"
+  },
+  "dependencies": {
+    "apify": "^3.1.10",
+    "crawlee": "^3.1.4"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

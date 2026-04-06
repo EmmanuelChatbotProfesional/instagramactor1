@@ -1,0 +1,36 @@
+{
+  "title": "Instagram Highlights Scraper",
+  "description": "Scrape Instagram highlights from one or more public accounts.",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "usernames": {
+      "title": "Instagram Usernames",
+      "description": "List of Instagram usernames to scrape (without the @ symbol).",
+      "type": "array",
+      "items": { "type": "string" },
+      "editor": "stringList",
+      "example": ["instagram", "cristiano", "leomessi"],
+      "prefill": ["instagram"]
+    },
+    "maxRetries": {
+      "title": "Max Retries per Username",
+      "description": "How many times to retry a username if the request fails.",
+      "type": "integer",
+      "default": 3,
+      "minimum": 1,
+      "maximum": 10,
+      "editor": "number"
+    },
+    "delayBetweenRequestsMs": {
+      "title": "Delay Between Requests (ms)",
+      "description": "Milliseconds to wait between requests to avoid rate limiting.",
+      "type": "integer",
+      "default": 1500,
+      "minimum": 500,
+      "maximum": 10000,
+      "editor": "number"
+    }
+  },
+  "required": ["usernames"]
+}
